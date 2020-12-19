@@ -19,3 +19,6 @@
 실행 명령어
 
     tsc --init : tsconfig.json 파일 생성
+
+tsconfig 옵션 정리
+[here](https://geonlee.tistory.com/214)
