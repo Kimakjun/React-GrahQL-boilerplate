@@ -2,5 +2,7 @@ schema: src/api/**/*.graphql
 generates:
   ./src/types/api.d.ts:
     plugins:
+      - add:
+          content: "import {PubSub} from 'graphql-subscriptions';"
       - typescript
       - typescript-resolvers

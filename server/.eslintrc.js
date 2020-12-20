@@ -29,6 +29,7 @@ module.exports = {
           ['@config', './src/config'],
           ['@models', './src/models'],
           ['@util', './src/util'],
+          ['@type', './src/types'],
           ['@', './src'],
         ],
       },

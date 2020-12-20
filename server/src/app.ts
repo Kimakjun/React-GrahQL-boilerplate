@@ -1,4 +1,4 @@
-import { ApolloServer } from 'apollo-server-express';
+import { ApolloServer, PubSub } from 'apollo-server-express';
 import express, { Express } from 'express';
 import { createServer, Server } from 'http';
 import schema from '@config/schema';
@@ -12,11 +12,14 @@ class App {
 
   private apolloServer: ApolloServer;
 
+  private pubsub: PubSub;
+
   constructor() {
+    this.pubsub = new PubSub();
     this.app = express();
     this.apolloServer = new ApolloServer({
       schema,
-      context: (ctx) => ({ ...ctx }),
+      context: (ctx) => ({ ...ctx, pubsub: this.pubsub }),
       playground: true,
     });
     this.server = createServer(this.app);
@@ -28,6 +31,7 @@ class App {
       app: this.app,
       path: GRAPHQL_ENDPOINT,
     });
+    this.apolloServer.installSubscriptionHandlers(this.server);
   }
 }
 

@@ -16,6 +16,7 @@
         "root": ["."],
         "alias": {
           "@util": "./src/util",
+          "@type": "./src/types"
           "@": "./src"
         }
       }
