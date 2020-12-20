@@ -18,6 +18,8 @@
     tsconfig-paths:
     graphql graphql-tools : graphql 쿼리 사용하기 위한 모듈과 graphql 스키마 설정을 도와 주는 라이브러리
     eslint-import-resolver-alias : lint 적용시에도 절대경로 알려주기위한 플러그인
+    @graphql-codegen/cli @graphql-codegen/add:
+    @graphql-codegen/typescript @graphql-codegen/typescript-resolvers
 
 실행 명령어
 

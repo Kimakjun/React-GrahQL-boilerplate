@@ -5,6 +5,8 @@
   "main": "src/index.js",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
+    "predev": "npm run types",
+    "types": "graphql-codegen",
     "dev": "nodemon --exec ts-node -r tsconfig-paths/register ./src/index.ts"
   },
   "author": "",
@@ -20,6 +22,10 @@
     "@babel/core": "^7.12.10",
     "@babel/preset-env": "^7.12.11",
     "@babel/preset-typescript": "^7.12.7",
+    "@graphql-codegen/add": "^2.0.2",
+    "@graphql-codegen/cli": "^1.19.4",
+    "@graphql-codegen/typescript": "^1.19.0",
+    "@graphql-codegen/typescript-resolvers": "^1.18.0",
     "@typescript-eslint/eslint-plugin": "^4.10.0",
     "@typescript-eslint/parser": "^4.10.0",
     "babel-plugin-module-resolver": "^4.0.0",

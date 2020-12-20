@@ -1,0 +1,6 @@
+schema: src/api/**/*.graphql
+generates:
+  ./src/types/api.d.ts:
+    plugins:
+      - typescript
+      - typescript-resolvers
