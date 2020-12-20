@@ -1,7 +1,7 @@
 import { makeExecutableSchema, mergeTypeDefs, mergeResolvers, loadFilesSync } from 'graphql-tools';
 import path from 'path';
 
-const allTypes = loadFilesSync(path.join(__dirname, '../api/**/*.grahql'));
+const allTypes = loadFilesSync(path.join(__dirname, '../api/**/*.graphql'));
 
 const allResolvers = loadFilesSync(path.join(__dirname, '../api/**/*.resolvers.ts'));
 
