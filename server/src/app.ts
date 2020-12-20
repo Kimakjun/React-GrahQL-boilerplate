@@ -2,6 +2,7 @@ import { ApolloServer, PubSub } from 'apollo-server-express';
 import express, { Express } from 'express';
 import { createServer, Server } from 'http';
 import schema from '@config/schema';
+import cors, { CorsOptions } from 'cors';
 
 const GRAPHQL_ENDPOINT = '/graphql';
 
@@ -27,9 +28,14 @@ class App {
   }
 
   private middlewares() {
+    const corsOptions: CorsOptions = {
+      credentials: true,
+      origin: 'http://localhost:3000',
+    };
     this.apolloServer.applyMiddleware({
       app: this.app,
       path: GRAPHQL_ENDPOINT,
+      cors: corsOptions,
     });
     this.apolloServer.installSubscriptionHandlers(this.server);
   }

@@ -27,3 +27,7 @@
 
 tsconfig 옵션 정리
 [here](https://geonlee.tistory.com/214)
+
+### Client
+
+    @apollo/client @apollo/react-hooks subscriptions-transport-ws
