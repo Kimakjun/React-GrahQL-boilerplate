@@ -2,7 +2,7 @@ import React, { FC } from "react";
 import { BrowserRouter as Router, Route, Switch } from "react-router-dom";
 import { ApolloProvider } from "@apollo/react-hooks";
 import client from "./apollo";
-import Main from "./routes/Main";
+import Main from "@routes/Main";
 
 const App: FC = () => (
   <ApolloProvider client={client}>
