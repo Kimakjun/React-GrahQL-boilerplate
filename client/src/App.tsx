@@ -1,14 +1,14 @@
-import React, { FC } from "react";
-import { BrowserRouter as Router, Route, Switch } from "react-router-dom";
-import { ApolloProvider } from "@apollo/react-hooks";
-import client from "./apollo";
-import Main from "@routes/Main";
+import React, { FC } from 'react';
+import { BrowserRouter as Router, Route, Switch } from 'react-router-dom';
+import { ApolloProvider } from '@apollo/react-hooks';
+import Main from '@routes/Main';
+import client from './apollo';
 
 const App: FC = () => (
   <ApolloProvider client={client}>
     <Router>
       <Switch>
-        <Route exact path="/" component={Main}></Route>
+        <Route exact path="/" component={Main} />
       </Switch>
     </Router>
   </ApolloProvider>
