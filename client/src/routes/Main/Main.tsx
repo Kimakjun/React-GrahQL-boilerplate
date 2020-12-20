@@ -5,8 +5,8 @@ import { Hello } from '@type/api';
 
 const Main: FC = () => {
   const { data, loading } = useQuery<Hello>(HELLO);
-  console.log(data?.hello.result);
-  return <div>{loading ? <span>loading..</span> : '데이터 전송 성공'}</div>;
+
+  return <>{loading ? <span>loading..</span> : data?.hello.result}</>;
 };
 
 export default Main;
