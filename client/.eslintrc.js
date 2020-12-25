@@ -33,7 +33,8 @@ module.exports = {
               ['@', './src'],
               ['@routes', './src/routes'],
               ['@queries', './src/queries'],
-              ['@type', './src/types']
+              ['@type', './src/types'],
+              ['@theme', './src/theme']
             ],
           },
         },
