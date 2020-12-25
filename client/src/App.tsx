@@ -3,6 +3,7 @@ import { BrowserRouter as Router, Route, Switch } from 'react-router-dom';
 import { ApolloProvider } from '@apollo/react-hooks';
 import Main from '@routes/Main';
 import client from './apollo';
+import './antd.less';
 
 const App: FC = () => (
   <ApolloProvider client={client}>

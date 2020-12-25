@@ -4,6 +4,7 @@ import { createServer, Server } from 'http';
 import schema from '@config/schema';
 import cors, { CorsOptions } from 'cors';
 
+
 const GRAPHQL_ENDPOINT = '/graphql';
 
 class App {
