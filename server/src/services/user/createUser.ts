@@ -12,11 +12,18 @@ const saltRounds = 10;
 
 const createUser = async ({ name, email, password }: CreateUserProps): Promise<SignupResponse> => {
   try {
+    const exUser = await User.find({ email });
+
+    if (exUser.length !== 0) {
+      return { result: 'fail', error: '이미 존재하는 회원입니다.' };
+    }
+
     const hashPassword = bcrypt.hashSync(password, saltRounds);
+
     await User.create({ name, email, password: hashPassword });
+
     return { result: 'success' };
   } catch (error) {
-    console.error(error);
     return { result: 'fail', error: error.message };
   }
 };
