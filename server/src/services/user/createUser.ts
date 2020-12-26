@@ -12,9 +12,9 @@ const saltRounds = 10;
 
 const createUser = async ({ name, email, password }: CreateUserProps): Promise<SignupResponse> => {
   try {
-    const exUser = await User.find({ email });
+    const exUser = await User.findOne({ email });
 
-    if (exUser.length !== 0) {
+    if (exUser) {
       return { result: 'fail', error: '이미 존재하는 회원입니다.' };
     }
 

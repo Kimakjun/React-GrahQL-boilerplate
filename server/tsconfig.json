@@ -28,6 +28,7 @@
       "@type/*": ["src/types/*"],
       "@model/*": ["src/models/*"],
       "@service/*": ["src/services/*"],
+      "@passport/*": ["src/passport/*"],
       "@/*": ["src/*"]
     }
   }

@@ -31,6 +31,7 @@ module.exports = {
           ['@util', './src/util'],
           ['@type', './src/types'],
           ['@service', './src/services'],
+          ['@passport', './src/passport'],
           ['@', './src'],
         ],
       },

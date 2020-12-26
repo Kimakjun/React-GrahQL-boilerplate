@@ -9,6 +9,8 @@ import compression from 'compression';
 import morgan from 'morgan';
 import cookieParser from 'cookie-parser';
 import { buildContext } from 'graphql-passport';
+import passportInit from '@passport/.';
+import passport from 'passport';
 
 const GRAPHQL_ENDPOINT = '/graphql';
 
@@ -49,6 +51,7 @@ class App {
       this.app.use(morgan('dev'));
       this.app.use(express.json());
     }
+    passportInit();
     this.app.use(cookieParser());
     this.app.use(compression());
     this.apolloServer.applyMiddleware({
