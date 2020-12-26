@@ -30,6 +30,7 @@ module.exports = {
           ['@models', './src/models'],
           ['@util', './src/util'],
           ['@type', './src/types'],
+          ['@service', './src/services'],
           ['@', './src'],
         ],
       },

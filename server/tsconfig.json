@@ -27,6 +27,7 @@
       "@util/*": ["src/util/*"],
       "@type/*": ["src/types/*"],
       "@model/*": ["src/models/*"],
+      "@service/*": ["src/services/*"],
       "@/*": ["src/*"]
     }
   }

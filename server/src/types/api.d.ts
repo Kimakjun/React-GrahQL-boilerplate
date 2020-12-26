@@ -23,12 +23,26 @@ export type SigninResponse = {
 export type Mutation = {
   __typename?: 'Mutation';
   signin?: Maybe<SigninResponse>;
+  signup?: Maybe<SignupResponse>;
 };
 
 
 export type MutationSigninArgs = {
   email: Scalars['String'];
   password: Scalars['String'];
+};
+
+
+export type MutationSignupArgs = {
+  name: Scalars['String'];
+  email: Scalars['String'];
+  password: Scalars['String'];
+};
+
+export type SignupResponse = {
+  __typename?: 'SignupResponse';
+  result: Scalars['String'];
+  error?: Maybe<Scalars['String']>;
 };
 
 export type HelloResponse = {
@@ -123,6 +137,7 @@ export type ResolversTypes = {
   SigninResponse: ResolverTypeWrapper<SigninResponse>;
   String: ResolverTypeWrapper<Scalars['String']>;
   Mutation: ResolverTypeWrapper<{}>;
+  SignupResponse: ResolverTypeWrapper<SignupResponse>;
   HelloResponse: ResolverTypeWrapper<HelloResponse>;
   Query: ResolverTypeWrapper<{}>;
   Boolean: ResolverTypeWrapper<Scalars['Boolean']>;
@@ -133,6 +148,7 @@ export type ResolversParentTypes = {
   SigninResponse: SigninResponse;
   String: Scalars['String'];
   Mutation: {};
+  SignupResponse: SignupResponse;
   HelloResponse: HelloResponse;
   Query: {};
   Boolean: Scalars['Boolean'];
@@ -146,6 +162,13 @@ export type SigninResponseResolvers<ContextType = any, ParentType extends Resolv
 
 export type MutationResolvers<ContextType = any, ParentType extends ResolversParentTypes['Mutation'] = ResolversParentTypes['Mutation']> = {
   signin?: Resolver<Maybe<ResolversTypes['SigninResponse']>, ParentType, ContextType, RequireFields<MutationSigninArgs, 'email' | 'password'>>;
+  signup?: Resolver<Maybe<ResolversTypes['SignupResponse']>, ParentType, ContextType, RequireFields<MutationSignupArgs, 'name' | 'email' | 'password'>>;
+};
+
+export type SignupResponseResolvers<ContextType = any, ParentType extends ResolversParentTypes['SignupResponse'] = ResolversParentTypes['SignupResponse']> = {
+  result?: Resolver<ResolversTypes['String'], ParentType, ContextType>;
+  error?: Resolver<Maybe<ResolversTypes['String']>, ParentType, ContextType>;
+  __isTypeOf?: IsTypeOfResolverFn<ParentType, ContextType>;
 };
 
 export type HelloResponseResolvers<ContextType = any, ParentType extends ResolversParentTypes['HelloResponse'] = ResolversParentTypes['HelloResponse']> = {
@@ -161,6 +184,7 @@ export type QueryResolvers<ContextType = any, ParentType extends ResolversParent
 export type Resolvers<ContextType = any> = {
   SigninResponse?: SigninResponseResolvers<ContextType>;
   Mutation?: MutationResolvers<ContextType>;
+  SignupResponse?: SignupResponseResolvers<ContextType>;
   HelloResponse?: HelloResponseResolvers<ContextType>;
   Query?: QueryResolvers<ContextType>;
 };
