@@ -10,11 +10,24 @@ import morgan from 'morgan';
 import cookieParser from 'cookie-parser';
 import { buildContext } from 'graphql-passport';
 import passportInit from '@passport/.';
-import passport from 'passport';
+import { RedisPubSub } from 'graphql-redis-subscriptions';
+import Redis, { RedisOptions } from 'ioredis';
 
 const GRAPHQL_ENDPOINT = '/graphql';
 
 const prod = process.env.NODE_ENV === 'production';
+
+const { REDIS_PASSWORD, REDIS_HOST, REDIS_PORT } = process.env;
+
+const options: RedisOptions = {
+  host: REDIS_HOST,
+  port: (REDIS_PORT as unknown) as number,
+  password: REDIS_PASSWORD,
+  retryStrategy: (times: any) => {
+    // reconnect after
+    return Math.min(times * 50, 2000);
+  },
+};
 
 class App {
   public app: Express;
@@ -23,10 +36,13 @@ class App {
 
   private apolloServer: ApolloServer;
 
-  private pubsub: PubSub;
+  private pubsub: RedisPubSub;
 
   constructor() {
-    this.pubsub = new PubSub();
+    this.pubsub = new RedisPubSub({
+      publisher: new Redis(options),
+      subscriber: new Redis(options),
+    });
     this.app = express();
     this.apolloServer = new ApolloServer({
       schema,

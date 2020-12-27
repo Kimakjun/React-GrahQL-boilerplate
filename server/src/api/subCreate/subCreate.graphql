@@ -1,0 +1,7 @@
+type subCreateResponse {
+  result: String!
+}
+
+type Mutation {
+  subCreate: subCreateResponse!
+}

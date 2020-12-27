@@ -7,12 +7,14 @@
     "test": "echo \"Error: no test specified\" && exit 1",
     "predev": "npm run types",
     "types": "graphql-codegen",
-    "dev": "nodemon --exec ts-node -r tsconfig-paths/register ./src/index.ts"
+    "dev": "nodemon --exec ts-node -r tsconfig-paths/register ./src/index.ts",
+    "start": "cross-env NODE_ENV=production PORT=80 pm2 start ts-node -- --type-check -r tsconfig-paths/register ./src/index.ts -i 0"
   },
   "author": "",
   "license": "MIT",
   "dependencies": {
     "@types/bcrypt": "^3.0.0",
+    "@types/ioredis": "^4.17.10",
     "@types/passport-local": "^1.0.33",
     "apollo-server-express": "^2.19.0",
     "bcrypt": "^5.0.0",
@@ -23,15 +25,18 @@
     "express": "^4.17.1",
     "graphql": "^15.4.0",
     "graphql-passport": "^0.6.3",
+    "graphql-redis-subscriptions": "^2.3.1",
     "graphql-tools": "^7.0.2",
     "helmet": "^4.2.0",
     "hpp": "^0.2.3",
+    "ioredis": "^4.19.4",
     "jsonwebtoken": "^8.5.1",
     "mongoose": "^5.10.15",
     "morgan": "^1.10.0",
     "passport": "^0.4.1",
     "passport-jwt": "^4.0.0",
     "passport-local": "^1.0.0",
+    "pm2": "^4.5.1",
     "typescript": "^4.1.3"
   },
   "devDependencies": {

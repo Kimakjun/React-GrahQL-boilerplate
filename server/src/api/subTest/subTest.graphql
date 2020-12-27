@@ -1,0 +1,7 @@
+type SubTestResponse {
+  result: String!
+}
+
+type Subscription {
+  subTest: SubTestResponse!
+}

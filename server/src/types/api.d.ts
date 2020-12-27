@@ -24,6 +24,7 @@ export type Mutation = {
   __typename?: 'Mutation';
   signin?: Maybe<SigninResponse>;
   signup?: Maybe<SignupResponse>;
+  subCreate: SubCreateResponse;
 };
 
 
@@ -43,6 +44,21 @@ export type SignupResponse = {
   __typename?: 'SignupResponse';
   result: Scalars['String'];
   error?: Maybe<Scalars['String']>;
+};
+
+export type SubCreateResponse = {
+  __typename?: 'subCreateResponse';
+  result: Scalars['String'];
+};
+
+export type SubTestResponse = {
+  __typename?: 'SubTestResponse';
+  result: Scalars['String'];
+};
+
+export type Subscription = {
+  __typename?: 'Subscription';
+  subTest: SubTestResponse;
 };
 
 export type HelloResponse = {
@@ -138,6 +154,9 @@ export type ResolversTypes = {
   String: ResolverTypeWrapper<Scalars['String']>;
   Mutation: ResolverTypeWrapper<{}>;
   SignupResponse: ResolverTypeWrapper<SignupResponse>;
+  subCreateResponse: ResolverTypeWrapper<SubCreateResponse>;
+  SubTestResponse: ResolverTypeWrapper<SubTestResponse>;
+  Subscription: ResolverTypeWrapper<{}>;
   HelloResponse: ResolverTypeWrapper<HelloResponse>;
   Query: ResolverTypeWrapper<{}>;
   Boolean: ResolverTypeWrapper<Scalars['Boolean']>;
@@ -149,6 +168,9 @@ export type ResolversParentTypes = {
   String: Scalars['String'];
   Mutation: {};
   SignupResponse: SignupResponse;
+  subCreateResponse: SubCreateResponse;
+  SubTestResponse: SubTestResponse;
+  Subscription: {};
   HelloResponse: HelloResponse;
   Query: {};
   Boolean: Scalars['Boolean'];
@@ -163,12 +185,27 @@ export type SigninResponseResolvers<ContextType = any, ParentType extends Resolv
 export type MutationResolvers<ContextType = any, ParentType extends ResolversParentTypes['Mutation'] = ResolversParentTypes['Mutation']> = {
   signin?: Resolver<Maybe<ResolversTypes['SigninResponse']>, ParentType, ContextType, RequireFields<MutationSigninArgs, 'email' | 'password'>>;
   signup?: Resolver<Maybe<ResolversTypes['SignupResponse']>, ParentType, ContextType, RequireFields<MutationSignupArgs, 'name' | 'email' | 'password'>>;
+  subCreate?: Resolver<ResolversTypes['subCreateResponse'], ParentType, ContextType>;
 };
 
 export type SignupResponseResolvers<ContextType = any, ParentType extends ResolversParentTypes['SignupResponse'] = ResolversParentTypes['SignupResponse']> = {
   result?: Resolver<ResolversTypes['String'], ParentType, ContextType>;
   error?: Resolver<Maybe<ResolversTypes['String']>, ParentType, ContextType>;
   __isTypeOf?: IsTypeOfResolverFn<ParentType, ContextType>;
+};
+
+export type SubCreateResponseResolvers<ContextType = any, ParentType extends ResolversParentTypes['subCreateResponse'] = ResolversParentTypes['subCreateResponse']> = {
+  result?: Resolver<ResolversTypes['String'], ParentType, ContextType>;
+  __isTypeOf?: IsTypeOfResolverFn<ParentType, ContextType>;
+};
+
+export type SubTestResponseResolvers<ContextType = any, ParentType extends ResolversParentTypes['SubTestResponse'] = ResolversParentTypes['SubTestResponse']> = {
+  result?: Resolver<ResolversTypes['String'], ParentType, ContextType>;
+  __isTypeOf?: IsTypeOfResolverFn<ParentType, ContextType>;
+};
+
+export type SubscriptionResolvers<ContextType = any, ParentType extends ResolversParentTypes['Subscription'] = ResolversParentTypes['Subscription']> = {
+  subTest?: SubscriptionResolver<ResolversTypes['SubTestResponse'], "subTest", ParentType, ContextType>;
 };
 
 export type HelloResponseResolvers<ContextType = any, ParentType extends ResolversParentTypes['HelloResponse'] = ResolversParentTypes['HelloResponse']> = {
@@ -185,6 +222,9 @@ export type Resolvers<ContextType = any> = {
   SigninResponse?: SigninResponseResolvers<ContextType>;
   Mutation?: MutationResolvers<ContextType>;
   SignupResponse?: SignupResponseResolvers<ContextType>;
+  subCreateResponse?: SubCreateResponseResolvers<ContextType>;
+  SubTestResponse?: SubTestResponseResolvers<ContextType>;
+  Subscription?: SubscriptionResolvers<ContextType>;
   HelloResponse?: HelloResponseResolvers<ContextType>;
   Query?: QueryResolvers<ContextType>;
 };
